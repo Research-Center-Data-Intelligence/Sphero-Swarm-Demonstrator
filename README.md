@@ -36,7 +36,7 @@ In onze spherov3-code hebben we twee klassen:
 
 
 # Voorbeeld:
-<img width="391" alt="image" src="https://github.com/Research-Center-Data-Intelligence/Sphero-Swarm-Demonstrator/Images/example.png">
+<img width="391" alt="image" src="https://github.com/Research-Center-Data-Intelligence/Sphero-Swarm-Demonstrator/blob/main/Images/example.png">
 
 # XBOX Bolts
 Dit is een zeer interactieve applicatie die mijn team heeft gemaakt. Wanneer je `ControllerUI.py` start, zoekt het naar alle bolten in de omgeving en vervolgens worden alle bolten in een lijstbox weergegeven. Je kunt eenvoudig een bolt selecteren en op 'Verbinden' klikken om verbinding te maken. Om te ontdekken welke bolt je in de lijst moet selecteren haal je een bolt uit de doos. Vervolgens geeft deze op het display een code weer beginnende met SB. Deze code staat aan het einde van de naam in de listbox. Nadat het verbinden is gelukt, start de bolt met een snelheid van 50 en kun je deze besturen met de joystick. Je kunt ook de snelheid verhogen door op 'RT' te drukken en om de snelheid te verlagen, druk op 'LB'. Om te stoppen, druk je op 'B'.
@@ -50,7 +50,7 @@ Let op, om te sturen moet je constant de joystick ingedrukt houden! Blijf dus bi
   Sluit je Xbox 360-controller aan voordat je dit script start."
   
 
-<img width="302" alt="image" src="https://github.com/Research-Center-Data-Intelligence/Sphero-Swarm-Demonstrator/Images/xbox_ui.png">
+<img width="302" alt="image" src="https://github.com/Research-Center-Data-Intelligence/Sphero-Swarm-Demonstrator/blob/main/Images/xbox_ui.png">
 
      
 
