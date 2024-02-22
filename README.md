@@ -1,5 +1,5 @@
 # SpheroBolts
-Code waarmee mensen verbinding kunnen maken met Sphero Bolts om ze te besturen met python.
+Code waarmee mensen verbinding kunnen maken met Sphero Bolts om ze te besturen met Python. Mogelijk om aan te sturen met een Xbox 360-controller.
 
 # Benodigdheden
 1. pip install bleak
@@ -11,7 +11,7 @@ We hebben code van een vorig project gebruikt en hebben het duidelijker gemaakt,
 
 *Zorg ervoor dat spherov3.py en sphero_constructors.py zich in dezelfde map bevinden waar je project wordt gemaakt.
 
-# Functies
+# Functies van spherov3
 In onze spherov3-code hebben we twee klassen:
 
 1.Scanner
@@ -36,8 +36,21 @@ In onze spherov3-code hebben we twee klassen:
 
 
 # Voorbeeld:
-<img width="391" alt="image" src="https://github.com/MuhammadHasoun/SpheroBolts/assets/159450804/0ad2e31a-16a9-4458-9a17-3941d0e43a9f">
+<img width="391" alt="image" src="https://github.com/Research-Center-Data-Intelligence/Sphero-Swarm-Demonstrator/assets/159450804/0ad2e31a-16a9-4458-9a17-3941d0e43a9f">
 
+# XBOX Bolts
+Dit is een zeer interactieve applicatie die mijn team heeft gemaakt. Wanneer je `ControllerUI.py` start, zoekt het naar alle bolten in de omgeving en vervolgens worden alle bolten in een lijstbox weergegeven. Je kunt eenvoudig een bolt selecteren en op 'Verbinden' klikken om verbinding te maken. Om te ontdekken welke bolt je in de lijst moet selecteren haal je een bolt uit de doos. Vervolgens geeft deze op het display een code weer beginnende met SB. Deze code staat aan het einde van de naam in de listbox. Nadat het verbinden is gelukt, start de bolt met een snelheid van 50 en kun je deze besturen met de joystick. Je kunt ook de snelheid verhogen door op 'RT' te drukken en om de snelheid te verlagen, druk op 'LB'. Om te stoppen, druk je op 'B'.
+
+Let op, om te sturen moet je constant de joystick ingedrukt houden! Blijf dus bijvoorbeeld de joystick naar links duwen om de bolt in de gewenste richting te laten rollen. Het kan op het begin even wennen zijn om te ontdekken hoe je de controller gedraaid moet houden.
+
+# Benodigheden
+  pip install pygame
+
+# Belangrijk
+  Sluit je Xbox 360-controller aan voordat je dit script start."
+  
+
+<img width="302" alt="image" src="https://github.com/Research-Center-Data-Intelligence/Sphero-Swarm-Demonstrator/assets/159450804/e514dad8-ab55-4020-b21f-2738032ac286">
 
      
 
