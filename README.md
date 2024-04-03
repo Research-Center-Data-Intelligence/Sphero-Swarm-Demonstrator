@@ -41,8 +41,6 @@ In onze spherov3-code hebben we twee klassen:
 # XBOX Bolts
 Dit is een zeer interactieve applicatie die mijn team heeft gemaakt. Wanneer je `ControllerUI.py` start, zoekt het naar alle bolten in de omgeving en vervolgens worden alle bolten in een lijstbox weergegeven. Je kunt eenvoudig een bolt selecteren en op 'Verbinden' klikken om verbinding te maken. Om te ontdekken welke bolt je in de lijst moet selecteren haal je een bolt uit de doos. Vervolgens geeft deze op het display een code weer beginnende met SB. Deze code staat aan het einde van de naam in de listbox. Nadat het verbinden is gelukt, kun je de bolts besturen.
 
-Let op, om te sturen moet je constant de joystick ingedrukt houden! Blijf dus bijvoorbeeld de joystick naar links duwen om de bolt in de gewenste richting te laten rollen. Het kan op het begin even wennen zijn om te ontdekken hoe je de controller gedraaid moet houden.
-
 # Benodigheden
   pip install pygame
 
