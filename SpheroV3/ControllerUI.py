@@ -20,6 +20,7 @@ class ControllerUi:
 		self.run = False
 		self.all_bolts = []
 		self.current_bolt = ""
+		self.current_heading = 0
 
 	def GetClients(self):
 		while True:
@@ -101,22 +102,14 @@ class ControllerUi:
 		# create rt_label 
 		self.rt_label = Label(self.rt_frame,text="RT",bg='green',fg='white')
 		# create rt_function label
-		self.rt_function_label = Label(self.rt_frame,text="Increase Speed +50",fg='black')
+		self.rt_function_label = Label(self.rt_frame,text="Move forward",fg='black')
 
 		# create rt frame
 		self.lb_frame = Frame(self.tutorial_frame)
 		# create rt_label 
-		self.lb_label = Label(self.lb_frame,text="LB",bg='#b5c200',fg='white')
+		self.lb_label = Label(self.lb_frame,text="Joystick",bg='#ccc',fg='white')
 		# create rt_function label
-		self.lb_function_label = Label(self.lb_frame,text="Decrease speed -50",fg='black')
-
-
-		# create b frame
-		self.b_frame = Frame(self.tutorial_frame)
-		# create rt_label 
-		self.b_label = Label(self.b_frame,text="B",bg='red',fg='white',padx=5)
-		# create rt_function label
-		self.b_function_label = Label(self.b_frame,text="Brakes",fg='black')
+		self.lb_function_label = Label(self.lb_frame,text="Steering",fg='black')
 
 		threading.Thread(target=self.GetClients).start()
 		self.main_frame.pack()
@@ -135,9 +128,6 @@ class ControllerUi:
 		self.lb_label.pack(side=LEFT,padx=1)
 		self.lb_function_label.pack(side=RIGHT)
 
-		self.b_frame.pack(side=LEFT,padx=13,pady=10)
-		self.b_label.pack(side=LEFT,padx=1)
-		self.b_function_label.pack(side=RIGHT)
 
 		# mainloop
 		self.frm.mainloop()
@@ -145,30 +135,28 @@ class ControllerUi:
 	def change_speed(self):
 		while self.run:
 			try:
-				rb_pressed = self.controller.get_button(5)
-				lb_pressed = self.controller.get_button(4)
-				b_pressed = self.controller.get_button(1)
-				if int(rb_pressed) == 1:
-					if self.speed < 250:
-						self.speed += 50
+				speed_input = self.controller.get_axis(5)
 
-				if int(lb_pressed) == 1:
-					if self.speed > 50:
-						self.speed -= 50
+				# Normalize speed input
+				speed_input = (speed_input + 1) / 2
 
-				if int(b_pressed) == 1:
-					self.speed = 0
+				# Set speed
+				self.speed = int(speed_input * 256)
 
 				time.sleep(0.2)
 			except:
 				pass
 
-	def get_heading(self,x, y):
-		radians = math.atan2(y, x)
-		degrees = math.degrees(radians)
+	def get_heading(self, current_heading, x, y):
+		if abs(x) <= 0.3 and abs(y) <= 0.3:
+			return current_heading
+		
+		# Turn left or right based on x value
+		heading = current_heading + x*10
+
 		# Adjusting for going left to right and forward to backward
-		adjusted_degrees = (degrees + 180) % 360
-		return adjusted_degrees
+		adjusted_heading = heading - 360 * (heading // 360)
+		return adjusted_heading
 	def Control(self):
 		pygame.init()
 		#joystick= pygame.joystick.Joystick(0)
@@ -184,11 +172,14 @@ class ControllerUi:
 				x_axis = self.controller.get_axis(0)
 				y_axis = self.controller.get_axis(1)
 
+				# Round to 1 decimal place
+				x_axis = round(x_axis, 1)
+				y_axis = round(y_axis, 1)
+
 				# Get heading in degrees
-				heading = self.get_heading(x_axis, y_axis)
+				self.current_heading = self.get_heading(self.current_heading, x_axis, y_axis)
 				# Print heading
-				#print(f"Heading: {heading:.2f} degrees")
-				self.client.roll(self.speed,int(heading))
+				self.client.roll(self.speed,int(self.current_heading))
 
 				self.client.rest_yaw()
 
